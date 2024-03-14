@@ -1,6 +1,8 @@
-# This .gitignore file should be placed at the root of your Unity project directory
+# 이 .gitignore 파일은 Unity 프로젝트 디렉토리의 최상단에 배치되어야 합니다.
 #
-# Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore
+# 사용 전 이 파일의 이름을 .gitignore으로 수정해주세요
+#
+# Unity 프로젝트의 임시 파일들을 무시합니다.
 #
 /[Ll]ibrary/
 /[Tt]emp/
