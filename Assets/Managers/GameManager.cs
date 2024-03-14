@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
     }
 
+    private void Start()
+    {
+        SpawnBall();
+    }
+
     public void SpawnBall()
     {
         Instantiate(ballPrefab, ballSpawnPoint.transform.position, Quaternion.identity);

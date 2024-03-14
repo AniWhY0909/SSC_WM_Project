@@ -8,16 +8,17 @@ public class Ball : MonoBehaviour
     public int level;
 
     public bool isDrop;
+    public bool isFall;
     public bool isMerge;
 
-    private Rigidbody2D rigidbody2D;
+    private Rigidbody2D rb;
     private CircleCollider2D circleCollider2D;
     private SpriteRenderer spriteRenderer;
 
 
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         circleCollider2D = GetComponent<CircleCollider2D>();
     }
@@ -25,6 +26,7 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         isDrop = false;
+        isFall = false;
         isMerge = false;
 
         Setlevel();      
@@ -32,43 +34,49 @@ public class Ball : MonoBehaviour
 
     private void Update()
     { 
-        if (Input.GetMouseButton(0) && !isDrop)
+        if (Input.GetMouseButton(0) && !isFall)
         {
             Vector2 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            rigidbody2D.position = new Vector2(mPosition.x, rigidbody2D.position.y);
+            rb.position = new Vector2(mPosition.x, rb.position.y);
         }
-        else if (Input.GetMouseButtonUp(0) && !isDrop)
+        else if (Input.GetMouseButtonUp(0) && !isFall)
         {
-            isDrop = true;
-            rigidbody2D.gravityScale = 1;
+            isFall = true;
+            rb.gravityScale = 1;
         }
     }
 
     public void Setlevel()
     {
-        level = Random.Range(0, 5);
-        spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
-        circleCollider2D.radius = GameManager.Instance.ballDatas[level].size;
+        if (!isDrop) level = Random.Range(0, 4);
+
+        if (level < 4)
+        {
+            spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
+            circleCollider2D.radius = GameManager.Instance.ballDatas[level].size;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.tag == this.gameObject.tag)
+        if (collision.collider.tag == this.gameObject.tag)
         {
             Ball other = collision.gameObject.GetComponent<Ball>();
-            
-            if(!other.isMerge && !this.isMerge && other.level == this.level)
+
+            if (!other.isMerge && !this.isMerge && other.level == this.level)
             {
-                float myX = rigidbody2D.position.x;
-                float myY = rigidbody2D.position.y;
-                float otherX = other.rigidbody2D.position.x;
-                float otherY = other.rigidbody2D.position.y;
-                
-                if(myY < otherY || (myY == otherY && myX > otherX))
+                float myX = rb.position.x;
+                float myY = rb.position.y;
+                float otherX = other.rb.position.x;
+                float otherY = other.rb.position.y;
+
+                if (myY < otherY || (myY == otherY && myX > otherX))
                 {
+
                     Destroy(other.gameObject);
                     level++;
                     Setlevel();
+
                 }
             }
         }
