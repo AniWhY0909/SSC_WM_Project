@@ -6,8 +6,9 @@ public class GameManager : MonoBehaviour
 {
     public BallData[] ballDatas;
 
-    public GameObject ballSpawnPoint;
+    public Transform ballSpawnPoint;
     public GameObject ballPrefab;
+    public Ball lastBall;
     
     private static GameManager instance;
 
@@ -41,11 +42,27 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        SpawnBall();
+        Nextball();
     }
 
-    public void SpawnBall()
+    private void FixedUpdate()
     {
-        Instantiate(ballPrefab, ballSpawnPoint.transform.position, Quaternion.identity);
+        if (lastBall.isDrop)
+        {
+            Nextball();
+        }
+    }
+
+    Ball GetBall()
+    {
+        GameObject ball = Instantiate(ballPrefab, ballSpawnPoint);
+        Ball Ball = ball.GetComponent<Ball>();
+        return Ball;
+    }
+
+    public void Nextball()
+    {
+        Ball newBall = GetBall();
+        lastBall = newBall;
     }
 }

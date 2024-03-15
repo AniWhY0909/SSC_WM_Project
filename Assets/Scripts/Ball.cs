@@ -8,7 +8,6 @@ public class Ball : MonoBehaviour
     public int level;
 
     public bool isDrop;
-    public bool isFall;
     public bool isMerge;
 
     private Rigidbody2D rb;
@@ -26,7 +25,6 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         isDrop = false;
-        isFall = false;
         isMerge = false;
 
         Setlevel();      
@@ -34,20 +32,20 @@ public class Ball : MonoBehaviour
 
     private void Update()
     { 
-        if (Input.GetMouseButton(0) && !isFall)
+        if (Input.GetMouseButton(0) && !isDrop)
         {
             Vector2 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             rb.position = new Vector2(mPosition.x, rb.position.y);
         }
-        else if (Input.GetMouseButtonUp(0) && !isFall)
+        else if (Input.GetMouseButtonUp(0) && !isDrop)
         {
-            isFall = true;
             rb.gravityScale = 1;
         }
     }
 
     public void Setlevel()
     {
+        isMerge = false;
         if (!isDrop) level = Random.Range(0, 4);
 
         if (level < 4)
@@ -55,10 +53,16 @@ public class Ball : MonoBehaviour
             spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
             circleCollider2D.radius = GameManager.Instance.ballDatas[level].size;
         }
+
+        if(level >= 4)
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        isDrop = true;
         if (collision.collider.tag == this.gameObject.tag)
         {
             Ball other = collision.gameObject.GetComponent<Ball>();
@@ -75,8 +79,8 @@ public class Ball : MonoBehaviour
 
                     Destroy(other.gameObject);
                     level++;
+                    isMerge = true;
                     Setlevel();
-
                 }
             }
         }

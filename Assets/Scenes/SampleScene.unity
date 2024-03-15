@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 288648308}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: BallSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 288648307}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: 0}
+  m_LocalPosition: {x: 0, y: 27.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -295,8 +295,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a113a5c602a5e2d4cbd31b77518802ba, type: 2}
   - {fileID: 11400000, guid: f73856f97482f9640bb220e02eb1f2bd, type: 2}
   - {fileID: 11400000, guid: 2c4d2ae469d1fb141967c1475155dff2, type: 2}
-  ballSpawnPoint: {fileID: 288648307}
+  ballSpawnPoint: {fileID: 288648308}
   ballPrefab: {fileID: 7459571036187197847, guid: 8c2887ffd49a69d488224f79f9ab4118, type: 3}
+  lastBall: {fileID: 0}
 --- !u!1 &1946042615
 GameObject:
   m_ObjectHideFlags: 0
