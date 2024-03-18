@@ -76,7 +76,7 @@ public class Ball : MonoBehaviour
         Setlevel();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         isDrop = true;
         isFall = false;

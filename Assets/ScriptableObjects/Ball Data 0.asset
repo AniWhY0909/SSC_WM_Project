@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Ball Data 0
   m_EditorClassIdentifier: 
   ballImage: {fileID: 21300000, guid: d43ed00df9be11c40bb59b1dd4b2c538, type: 3}
-  size: 0.8
+  size: 0.75
