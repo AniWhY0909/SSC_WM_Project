@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: faa6babfae8a9f444b274542c7e4e73b, type: 3}
-  m_Name: Ball Data 2
+  m_Name: Ball Data 8
   m_EditorClassIdentifier: 
-  ballImage: {fileID: 21300000, guid: a205292c8a79a2b43830c513f3001179, type: 3}
-  size: 1.333333
+  ballImage: {fileID: 21300000, guid: c6a25689c20e03543b918c595ce0c37a, type: 3}
+  size: 3.2

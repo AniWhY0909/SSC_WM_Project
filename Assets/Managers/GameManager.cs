@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         DontDestroyOnLoad(this.gameObject);
     }
 
