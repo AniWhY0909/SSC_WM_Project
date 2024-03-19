@@ -58,16 +58,8 @@ public class Ball : MonoBehaviour
         isMerge = false;
         if (!isDrop) level = Random.Range(0, 5);
 
-        if (level < 11)
-        {
-            spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
-            circleCollider2D.radius = GameManager.Instance.ballDatas[level].size;
-        }
-
-        if(level >= 11)
-        {
-            Destroy(gameObject);
-        }
+        spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
+        circleCollider2D.radius = GameManager.Instance.ballDatas[level].size;
     }
 
     public void Merge(Vector2 position)
@@ -80,7 +72,7 @@ public class Ball : MonoBehaviour
     {
         isDrop = true;
         isFall = false;
-        if (collision.collider.tag == this.gameObject.tag)
+        if (collision.collider.tag == this.gameObject.tag && level < 11)
         {
             Ball other = collision.gameObject.GetComponent<Ball>();
 
