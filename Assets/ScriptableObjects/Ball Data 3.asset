@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Ball Data 3
   m_EditorClassIdentifier: 
   ballImage: {fileID: 21300000, guid: df458180f7e3a8147897dccb45a45d2a, type: 3}
+  collider2D: {fileID: 584179395588506981, guid: 8c2887ffd49a69d488224f79f9ab4118, type: 3}
   size: 1.25

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D), typeof(SpriteRenderer))]
 
 public class Ball : MonoBehaviour
 {
@@ -43,7 +42,7 @@ public class Ball : MonoBehaviour
             if(mPosition.x >= rightBorder) mPosition.x = rightBorder;
             if(mPosition.x <= leftBorder) mPosition.x = leftBorder;
 
-            rb.position = new Vector2(mPosition.x, rb.position.y);
+            transform.position = new Vector2(mPosition.x, transform.position.y);
 
         }
         else if (Input.GetMouseButtonUp(0) && !isDrop)
