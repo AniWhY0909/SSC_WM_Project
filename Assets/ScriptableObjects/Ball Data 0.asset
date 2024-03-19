@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa6babfae8a9f444b274542c7e4e73b, type: 3}
   m_Name: Ball Data 0
   m_EditorClassIdentifier: 
-  ballImage: {fileID: 21300000, guid: d43ed00df9be11c40bb59b1dd4b2c538, type: 3}
-  size: 0.75
+  ballImage: {fileID: 21300000, guid: 64d2e5aed4f0bcc449d9e99f306eae89, type: 3}
+  size: 0.5
