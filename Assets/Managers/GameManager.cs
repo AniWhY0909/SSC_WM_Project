@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 
     public Transform ballSpawnPoint;
     public GameObject ballPrefab;
-    public GameObject level2Prefab;
     public Ball lastBall;
     
     private static GameManager instance;
@@ -56,13 +55,6 @@ public class GameManager : MonoBehaviour
     Ball GetCircleBall()
     {
         GameObject ball = Instantiate(ballPrefab, ballSpawnPoint);
-        Ball Ball = ball.GetComponent<Ball>();
-        return Ball;
-    }
-
-    Ball GetPolygonBall()
-    {
-        GameObject ball = Instantiate(level2Prefab, ballSpawnPoint);
         Ball Ball = ball.GetComponent<Ball>();
         return Ball;
     }

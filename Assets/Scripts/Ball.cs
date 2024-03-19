@@ -58,6 +58,16 @@ public class Ball : MonoBehaviour
         if (!isDrop) level = Random.Range(0, 5);
 
         spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
+        if(level == 2 || level == 5)
+        {
+            gameObject.AddComponent<PolygonCollider2D>();
+            circleCollider2D.isTrigger = true;
+        }
+        else
+        {
+            Destroy(gameObject.GetComponent<PolygonCollider2D>());
+            circleCollider2D.isTrigger = false;
+        }
         circleCollider2D.radius = GameManager.Instance.ballDatas[level].size;
     }
 
