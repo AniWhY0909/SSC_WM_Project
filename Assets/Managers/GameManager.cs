@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public BallData[] ballDatas;
 
-    public Transform ballSpawnPoint;
+    public GameObject ballSpawnPoint;
     public GameObject ballPrefab;
     public Ball lastBall;
     
@@ -38,30 +39,46 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
-
-    private void Start()
-    {
-        Nextball();
-    }
-
     private void FixedUpdate()
     {
-        if (lastBall.isDrop)
+        if (lastBall != null && lastBall.isDrop)
         {
             Nextball();
         }
+
+        if(SceneManager.GetActiveScene().name == "GameScene")
+        {
+            if(ballSpawnPoint == null)
+            {
+                ballSpawnPoint = GameObject.Find("BallSpawnPoint");
+
+                if(lastBall == null)
+                {
+                    Nextball();
+                }
+            }
+        }
     }
 
-    Ball GetCircleBall()
+    public void GameOver()
     {
-        GameObject ball = Instantiate(ballPrefab, ballSpawnPoint);
+        if(SceneManager.GetActiveScene().name == "GameScene")
+        {
+            SceneManager.LoadScene("EndScene");
+        }
+    }
+
+    Ball GetBall()
+    {
+        if (ballSpawnPoint == null) return null;
+        GameObject ball = Instantiate(ballPrefab, ballSpawnPoint.transform);
         Ball Ball = ball.GetComponent<Ball>();
         return Ball;
     }
 
     public void Nextball()
     {
-        Ball newBall = GetCircleBall();
+        Ball newBall = GetBall();
         lastBall = newBall;
     }
 }

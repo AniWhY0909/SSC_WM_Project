@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -32,18 +31,5 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    public void SceneChange()
-    {
-        if (SceneManager.GetActiveScene().name == "TitleScene")
-        {
-            SceneManager.LoadScene("GameScene");
-        }
-
-        if(SceneManager.GetActiveScene().name == "EndScene")
-        {
-            SceneManager.LoadScene("TitleScene");
-        }
     }
 }

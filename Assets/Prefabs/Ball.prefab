@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 584179395588506981}
   - component: {fileID: 2892237232001562664}
   - component: {fileID: 14678098275062825}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ball
-  m_TagString: Apple
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,4 +163,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 0
   isDrop: 0
+  isFall: 0
   isMerge: 0
