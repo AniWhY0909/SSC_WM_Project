@@ -40,5 +40,10 @@ public class UIManager : MonoBehaviour
         {
             SceneManager.LoadScene("GameScene");
         }
+
+        if(SceneManager.GetActiveScene().name == "EndScene")
+        {
+            SceneManager.LoadScene("TitleScene");
+        }
     }
 }
