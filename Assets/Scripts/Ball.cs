@@ -81,7 +81,9 @@ public class Ball : MonoBehaviour
     {
         isDrop = true;
         isFall = false;
-        if (collision.collider.tag == this.gameObject.tag && level < 11)
+        this.gameObject.tag = "Drop";
+
+        if (collision.collider.gameObject.layer == this.gameObject.layer && level < 11)
         {
             Ball other = collision.gameObject.GetComponent<Ball>();
 

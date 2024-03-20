@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 101599233}
   - component: {fileID: 101599232}
   - component: {fileID: 101599231}
+  - component: {fileID: 101599235}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -301,6 +302,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &101599235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101599230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a204cb1b9b617408ce9ce31dd9d3ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &638134606
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,8 +441,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 638134607}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 101599235}
+        m_TargetAssemblyTypeName: SceneChanger, Assembly-CSharp
         m_MethodName: SceneChange
         m_Mode: 1
         m_Arguments:
@@ -680,6 +693,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1207797934}
   m_CullTransparentMesh: 1
+--- !u!1 &1369453153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1369453155}
+  - component: {fileID: 1369453154}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1369453154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369453153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73f7c8b0d6f43f04ca86062de3694907, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ballDatas:
+  - {fileID: 11400000, guid: 7fa8c973509b8c84d824e5cc85be3e75, type: 2}
+  - {fileID: 11400000, guid: a113a5c602a5e2d4cbd31b77518802ba, type: 2}
+  - {fileID: 11400000, guid: f73856f97482f9640bb220e02eb1f2bd, type: 2}
+  - {fileID: 11400000, guid: 2c4d2ae469d1fb141967c1475155dff2, type: 2}
+  - {fileID: 11400000, guid: fda86fdabfc0eb047a286c370cf0bb33, type: 2}
+  - {fileID: 11400000, guid: 465936203bb5c0d4486ee1dfd77f2ff6, type: 2}
+  - {fileID: 11400000, guid: 22f13a0955901f44eb19d005c1e928e7, type: 2}
+  - {fileID: 11400000, guid: f3c521778c0c36240b7f15facca5209d, type: 2}
+  - {fileID: 11400000, guid: f369cb9e608c88542bf38858f6bcfce5, type: 2}
+  - {fileID: 11400000, guid: 6c054451f7a675d41b66f8bc139123e1, type: 2}
+  - {fileID: 11400000, guid: 6a57a4ee9e17ba14d93bc38afafe1bd7, type: 2}
+  ballSpawnPoint: {fileID: 0}
+  ballPrefab: {fileID: 7459571036187197847, guid: 8c2887ffd49a69d488224f79f9ab4118, type: 3}
+  lastBall: {fileID: 0}
+--- !u!4 &1369453155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1369453153}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1691242116
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,3 +852,4 @@ SceneRoots:
   - {fileID: 101599234}
   - {fileID: 845587920}
   - {fileID: 638134608}
+  - {fileID: 1369453155}

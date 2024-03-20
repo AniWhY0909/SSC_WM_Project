@@ -4,13 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Circle
-  - Polygon
+  - Drop
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ball
   - Water
   - UI
   - 
