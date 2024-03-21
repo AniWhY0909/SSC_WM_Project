@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    private bool isCollided;
+
     public int level;
 
     public bool isDrop;
@@ -27,6 +29,7 @@ public class Ball : MonoBehaviour
         isDrop = false;
         isFall = false;
         isMerge = false;
+        isCollided = false;
 
         Setlevel();      
     }
@@ -73,6 +76,7 @@ public class Ball : MonoBehaviour
 
     public void Merge(Vector2 position)
     {
+        GameManager.Instance.UpdateScore(level);
         this.gameObject.transform.position = position;
         Setlevel();
     }
@@ -97,9 +101,9 @@ public class Ball : MonoBehaviour
                 if (myY < otherY || (myY == otherY && myX > otherX))
                 {
                     Destroy(other.gameObject);
-                    level++;
                     isMerge = true;
                     Merge(new Vector2((myX + otherX) / 2, (myY + otherY) / 2));
+                    level++;
                 }
             }
         }
