@@ -23,67 +23,36 @@ public class GameManager : MonoBehaviour
         {
             if (instance == null)
             {
-                return null;
+                instance = FindObjectOfType<GameManager>();
+                if (instance == null)
+                {
+                    GameObject managerObject = new GameObject("Game Manager");
+                    instance = managerObject.AddComponent<GameManager>();
+                }
             }
-        
+
             return instance;
         }
 
     }
-    
+
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(this.gameObject);
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        ballSpawnPoint = GameObject.Find("BallSpawnPoint");
+        tmp = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
     {
-        Nextball();    
+        tmp.text = " score : 0";
+        Nextball();
     }
 
     private void FixedUpdate()
     {
-
-        if (ballSpawnPoint != null && lastBall.isDrop)
+        if (lastBall == null || lastBall.isDrop)
         {
             Nextball();
-        }
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
-    {
-        if (SceneManager.GetActiveScene().name == "GameScene")
-        {
-            if (ballSpawnPoint == null)
-            {
-                ballSpawnPoint = GameObject.Find("BallSpawnPoint");
-
-                if (lastBall == null)
-                {
-                    Nextball();
-                }
-            }
-
-           if(ballSpawnPoint.transform.childCount != 0)
-            {
-                Destroy(ballSpawnPoint.transform.GetChild(0).gameObject);
-            }
-
-            if (tmp == null)
-            {
-                tmp = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-                tmp.text = " score : 0";
-            }
         }
     }
 
@@ -96,10 +65,9 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if(SceneManager.GetActiveScene().name == "GameScene")
-        {
-            SceneManager.LoadScene("EndScene");
-        }
+        ProjectManager.Instance.Score = currentScore;
+
+        SceneManager.LoadScene("EndScene");
     }
 
     Ball GetBall()
@@ -112,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void Nextball()
     {
+        Debug.Log("NextBall");
         Ball newBall = GetBall();
         lastBall = newBall;
     }
