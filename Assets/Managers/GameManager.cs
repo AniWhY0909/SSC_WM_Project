@@ -3,18 +3,24 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public BallData[] ballDatas;
+    public BallData[] nextBall;
 
     public GameObject ballSpawnPoint;
     public GameObject ballPrefab;
     public Ball lastBall;
     public TextMeshProUGUI tmp;
+    public Image image;
 
 
     public int currentScore;
+    public int nextBallLevel;
+    public int currentBallLevel;
+
     private static GameManager instance;
 
     public static GameManager Instance
@@ -40,10 +46,16 @@ public class GameManager : MonoBehaviour
     {
         ballSpawnPoint = GameObject.Find("BallSpawnPoint");
         tmp = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
+        image = GameObject.Find("NextBallImage").GetComponent<Image>();
     }
 
     private void Start()
     {
+        currentBallLevel = Random.Range(0, 5);
+        nextBallLevel = Random.Range(0, 5);
+
+        UpdateNextBall(nextBallLevel);
+
         tmp.text = " score : 0";
         Nextball();
     }
@@ -63,6 +75,12 @@ public class GameManager : MonoBehaviour
         tmp.text = "score : " + currentScore.ToString();
     }
 
+    public void UpdateNextBall(int level)
+    {
+        image.sprite = nextBall[nextBallLevel].ballImage;
+        currentBallLevel = nextBallLevel;
+    }
+
     public void GameOver()
     {
         ProjectManager.Instance.Score = currentScore;
@@ -80,7 +98,6 @@ public class GameManager : MonoBehaviour
 
     public void Nextball()
     {
-        Debug.Log("NextBall");
         Ball newBall = GetBall();
         lastBall = newBall;
     }

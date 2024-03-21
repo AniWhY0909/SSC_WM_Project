@@ -48,6 +48,8 @@ public class Ball : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && !isDrop)
         {
+            GameManager.Instance.nextBallLevel = Random.Range(0, 5);
+            GameManager.Instance.UpdateNextBall(GameManager.Instance.nextBallLevel);
             rb.gravityScale = 1;
             isFall = true;
         }
@@ -56,7 +58,7 @@ public class Ball : MonoBehaviour
     public void Setlevel()
     {
         isMerge = false;
-        if (!isDrop) level = Random.Range(0, 5);
+        if (!isDrop) level = GameManager.Instance.currentBallLevel;
         spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
         if (level == 2 || level == 5)
         {
