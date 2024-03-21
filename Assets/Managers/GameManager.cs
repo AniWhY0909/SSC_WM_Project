@@ -39,6 +39,12 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+
+    private void Start()
+    {
+        Nextball();    
+    }
+
     private void FixedUpdate()
     {
         if (lastBall != null && lastBall.isDrop)
