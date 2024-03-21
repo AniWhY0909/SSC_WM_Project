@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +11,10 @@ public class GameManager : MonoBehaviour
     public GameObject ballSpawnPoint;
     public GameObject ballPrefab;
     public Ball lastBall;
-    
+    public TextMeshProUGUI tmp;
+
+
+    public int currentScore;
     private static GameManager instance;
 
     public static GameManager Instance
@@ -19,59 +23,51 @@ public class GameManager : MonoBehaviour
         {
             if (instance == null)
             {
-                return null;
+                instance = FindObjectOfType<GameManager>();
+                if (instance == null)
+                {
+                    GameObject managerObject = new GameObject("Game Manager");
+                    instance = managerObject.AddComponent<GameManager>();
+                }
             }
-        
+
             return instance;
         }
 
     }
-    
+
     private void Awake()
     {
-        if(instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-        DontDestroyOnLoad(this.gameObject);
+        ballSpawnPoint = GameObject.Find("BallSpawnPoint");
+        tmp = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
     {
-        Nextball();    
+        tmp.text = " score : 0";
+        Nextball();
     }
 
     private void FixedUpdate()
     {
-
-        if (SceneManager.GetActiveScene().name == "GameScene")
+        if (lastBall == null || lastBall.isDrop)
         {
-            if (ballSpawnPoint == null)
-            {
-                ballSpawnPoint = GameObject.Find("BallSpawnPoint");
-
-                if (lastBall == null)
-                {
-                    Nextball();
-                }
-            }
-            if (lastBall.isDrop  || lastBall == null)
-            {
-                Nextball();
-            }
+            Nextball();
         }
+    }
+
+    public void UpdateScore(int score)
+    {
+        currentScore += (score + 1) * score;
+        //Debug.Log($"{score}: {(score + 1) * score} : {currentScore}");
+        tmp.text = "score : " + currentScore.ToString();
     }
 
     public void GameOver()
     {
-        if(SceneManager.GetActiveScene().name == "GameScene")
-        {
-            SceneManager.LoadScene("EndScene");
-        }
+        ProjectManager.Instance.Score = currentScore;
+
+        SceneManager.LoadScene("EndScene");
     }
 
     Ball GetBall()
@@ -84,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void Nextball()
     {
+        Debug.Log("NextBall");
         Ball newBall = GetBall();
         lastBall = newBall;
     }

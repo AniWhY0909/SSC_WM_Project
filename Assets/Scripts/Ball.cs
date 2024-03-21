@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+
     public int level;
 
     public bool isDrop;
@@ -28,19 +29,19 @@ public class Ball : MonoBehaviour
         isFall = false;
         isMerge = false;
 
-        Setlevel();      
+        Setlevel();
     }
 
     private void Update()
-    { 
+    {
         if (Input.GetMouseButton(0) && !isDrop && !isFall)
         {
             Vector2 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             float rightBorder = 8.5f - circleCollider2D.radius;
             float leftBorder = -8.5f + circleCollider2D.radius;
 
-            if(mPosition.x >= rightBorder) mPosition.x = rightBorder;
-            if(mPosition.x <= leftBorder) mPosition.x = leftBorder;
+            if (mPosition.x >= rightBorder) mPosition.x = rightBorder;
+            if (mPosition.x <= leftBorder) mPosition.x = leftBorder;
 
             transform.position = new Vector2(mPosition.x, transform.position.y);
 
@@ -56,9 +57,8 @@ public class Ball : MonoBehaviour
     {
         isMerge = false;
         if (!isDrop) level = Random.Range(0, 5);
-
         spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
-        if(level == 2 || level == 5)
+        if (level == 2 || level == 5)
         {
             gameObject.AddComponent<PolygonCollider2D>();
             circleCollider2D.isTrigger = true;
@@ -73,6 +73,7 @@ public class Ball : MonoBehaviour
 
     public void Merge(Vector2 position)
     {
+        GameManager.Instance.UpdateScore(level);
         this.gameObject.transform.position = position;
         Setlevel();
     }
@@ -82,8 +83,9 @@ public class Ball : MonoBehaviour
         isDrop = true;
         isFall = false;
         this.gameObject.tag = "Drop";
+        Debug.Log("ball collision detect");
 
-        if (collision.collider.gameObject.layer == this.gameObject.layer && level < 11)
+        if (collision.collider.gameObject.layer == this.gameObject.layer && level < 10)
         {
             Ball other = collision.gameObject.GetComponent<Ball>();
 
@@ -103,5 +105,7 @@ public class Ball : MonoBehaviour
                 }
             }
         }
+
+
     }
 }

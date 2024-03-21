@@ -35,4 +35,13 @@ public class BoxBoder : MonoBehaviour
             endCount = true;
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Drop"))
+        {
+            endCount = false;
+            endTime = 0;
+        }
+    }
 }
