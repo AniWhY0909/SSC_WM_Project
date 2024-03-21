@@ -83,30 +83,29 @@ public class Ball : MonoBehaviour
         isDrop = true;
         isFall = false;
         this.gameObject.tag = "Drop";
+        Debug.Log("ball collision detect");
 
-        if (level != 10)
+        if (collision.collider.gameObject.layer == this.gameObject.layer && level < 10)
         {
-            if (collision.collider.gameObject.layer == this.gameObject.layer)
+            Ball other = collision.gameObject.GetComponent<Ball>();
+
+            if (!other.isMerge && !this.isMerge && other.level == this.level)
             {
-                Ball other = collision.gameObject.GetComponent<Ball>();
+                float myX = rb.position.x;
+                float myY = rb.position.y;
+                float otherX = other.rb.position.x;
+                float otherY = other.rb.position.y;
 
-                if (!other.isMerge && !this.isMerge && other.level == this.level)
+                if (myY < otherY || (myY == otherY && myX > otherX))
                 {
-                    float myX = rb.position.x;
-                    float myY = rb.position.y;
-                    float otherX = other.rb.position.x;
-                    float otherY = other.rb.position.y;
-
-                    if (myY < otherY || (myY == otherY && myX > otherX))
-                    {
-                        Destroy(other.gameObject);
-                        level++;
-                        isMerge = true;
-                        Merge(new Vector2((myX + otherX) / 2, (myY + otherY) / 2));
-                    }
+                    Destroy(other.gameObject);
+                    level++;
+                    isMerge = true;
+                    Merge(new Vector2((myX + otherX) / 2, (myY + otherY) / 2));
                 }
             }
         }
+
 
     }
 }
