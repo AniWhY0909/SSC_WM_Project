@@ -38,11 +38,21 @@ public class ProjectManager : MonoBehaviour
         }
     }
 
-    public int HighestScore { get; private set; }
+    private int highestScore;
+    public int HighestScore
+    {
+        get => highestScore; 
+        
+        private set
+        {
+            highestScore = value;
+            PlayerPrefs.SetInt("Highest Score", value);
+        }
+    }
 
     private void Awake()
     {
-        if(instance == this)
+        if (instance == this)
         {
             DontDestroyOnLoad(gameObject);
         }
@@ -51,5 +61,10 @@ public class ProjectManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        highestScore = PlayerPrefs.GetInt("Highest Score");
     }
 }

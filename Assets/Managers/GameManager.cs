@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public GameObject ballSpawnPoint;
     public GameObject ballPrefab;
     public Ball lastBall;
-    public TextMeshProUGUI tmp;
+    public TextMeshProUGUI scoreTMP;
+    public TextMeshProUGUI highestscoreTMP;
     public Image image;
 
 
@@ -45,8 +46,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         ballSpawnPoint = GameObject.Find("BallSpawnPoint");
-        tmp = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
-        image = GameObject.Find("NextBallImage").GetComponent<Image>();
     }
 
     private void Start()
@@ -56,7 +55,8 @@ public class GameManager : MonoBehaviour
 
         UpdateNextBall(nextBallLevel);
 
-        tmp.text = " score : 0";
+        scoreTMP.text = "score : 0";
+        highestscoreTMP.text = ProjectManager.Instance.HighestScore.ToString();
         Nextball();
     }
 
@@ -68,17 +68,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateScore(int score)
+    public void UpdateScore(int value)
     {
-        currentScore += (score + 1) * score;
+        currentScore += (value + 1) * value;
         //Debug.Log($"{score}: {(score + 1) * score} : {currentScore}");
-        tmp.text = "score : " + currentScore.ToString();
+        scoreTMP.text = "score : " + currentScore.ToString();
     }
 
     public void UpdateNextBall(int level)
     {
-        image.sprite = nextBall[nextBallLevel].ballImage;
         currentBallLevel = nextBallLevel;
+        image.sprite = nextBall[nextBallLevel].ballImage;
     }
 
     public void GameOver()
