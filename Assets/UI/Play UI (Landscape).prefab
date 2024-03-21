@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 6377109706263592816}
   - component: {fileID: 295860918274897611}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Play UI (Landscape)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
