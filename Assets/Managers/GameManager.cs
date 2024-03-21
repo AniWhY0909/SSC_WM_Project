@@ -74,6 +74,11 @@ public class GameManager : MonoBehaviour
                 }
             }
 
+           if(ballSpawnPoint.transform.childCount != 0)
+            {
+                Destroy(ballSpawnPoint.transform.GetChild(0).gameObject);
+            }
+
             if (tmp == null)
             {
                 tmp = GameObject.Find("ScoreText").GetComponent<TextMeshProUGUI>();
