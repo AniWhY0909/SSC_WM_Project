@@ -39,23 +39,29 @@ public class GameManager : MonoBehaviour
         }
         DontDestroyOnLoad(this.gameObject);
     }
+
+    private void Start()
+    {
+        Nextball();    
+    }
+
     private void FixedUpdate()
     {
-        if (lastBall != null && lastBall.isDrop)
-        {
-            Nextball();
-        }
 
-        if(SceneManager.GetActiveScene().name == "GameScene")
+        if (SceneManager.GetActiveScene().name == "GameScene")
         {
-            if(ballSpawnPoint == null)
+            if (ballSpawnPoint == null)
             {
                 ballSpawnPoint = GameObject.Find("BallSpawnPoint");
 
-                if(lastBall == null)
+                if (lastBall == null)
                 {
                     Nextball();
                 }
+            }
+            if (lastBall.isDrop  || lastBall == null)
+            {
+                Nextball();
             }
         }
     }
