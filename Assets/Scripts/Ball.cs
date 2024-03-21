@@ -56,10 +56,12 @@ public class Ball : MonoBehaviour
     public void Setlevel()
     {
         isMerge = false;
-        if (!isDrop) level = GameManager.Instance.currentBallLevel;
-
-        GameManager.Instance.nextBallLevel = Random.Range(0, 5);
-        GameManager.Instance.UpdateNextBall(GameManager.Instance.nextBallLevel);
+        if (!isDrop)
+        {
+            level = GameManager.Instance.currentBallLevel;
+            GameManager.Instance.nextBallLevel = Random.Range(0, 5);
+            GameManager.Instance.UpdateNextBall(GameManager.Instance.nextBallLevel);
+        }
 
         spriteRenderer.sprite = GameManager.Instance.ballDatas[level].ballImage;
         if (level == 2 || level == 5)
