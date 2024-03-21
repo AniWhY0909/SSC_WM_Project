@@ -48,8 +48,11 @@ public class Ball : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0) && !isDrop)
         {
-            GameManager.Instance.nextBallLevel = Random.Range(0, 5);
-            GameManager.Instance.UpdateNextBall(GameManager.Instance.nextBallLevel);
+            if (!isFall)
+            {
+                GameManager.Instance.nextBallLevel = Random.Range(0, 5);
+                GameManager.Instance.UpdateNextBall(GameManager.Instance.nextBallLevel);
+            }
             rb.gravityScale = 1;
             isFall = true;
         }
@@ -85,7 +88,7 @@ public class Ball : MonoBehaviour
         isDrop = true;
         isFall = false;
         this.gameObject.tag = "Drop";
-        Debug.Log("ball collision detect");
+        //Debug.Log("ball collision detect");
 
         if (collision.collider.gameObject.layer == this.gameObject.layer && level < 10)
         {
