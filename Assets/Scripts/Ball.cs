@@ -34,22 +34,26 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && !isDrop && !isFall)
+        if (GameManager.Instance.touchUI == false)
         {
-            Vector2 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            float rightBorder = 8.5f - circleCollider2D.radius;
-            float leftBorder = -8.5f + circleCollider2D.radius;
+            if (Input.GetMouseButton(0) && !isDrop && !isFall)
+            {
+                Vector2 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                float rightBorder = 8.5f - circleCollider2D.radius;
+                float leftBorder = -8.5f + circleCollider2D.radius;
 
-            if (mPosition.x >= rightBorder) mPosition.x = rightBorder;
-            if (mPosition.x <= leftBorder) mPosition.x = leftBorder;
+                if (mPosition.x >= rightBorder) mPosition.x = rightBorder;
+                if (mPosition.x <= leftBorder) mPosition.x = leftBorder;
 
-            transform.position = new Vector2(mPosition.x, transform.position.y);
+                transform.position = new Vector2(mPosition.x, transform.position.y);
 
-        }
-        else if (Input.GetMouseButtonUp(0) && !isDrop)
-        {
-            rb.gravityScale = 1;
-            isFall = true;
+            }
+
+            else if (Input.GetMouseButtonUp(0) && !isDrop)
+            {
+                rb.gravityScale = 1;
+                isFall = true;
+            }
         }
     }
 

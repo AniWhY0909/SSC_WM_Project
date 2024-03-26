@@ -11,10 +11,10 @@ public class ProjectManager : MonoBehaviour
     {
         get
         {
-            if (instance == null)
+            if (null == instance)
             {
                 instance = GameObject.FindObjectOfType<ProjectManager>();
-                if (instance == null)
+                if (null == instance)
                 {
                     GameObject gameObject = new GameObject("Project Manager");
                     instance = gameObject.AddComponent<ProjectManager>();
