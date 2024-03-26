@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public Ball lastBall;
     public TextMeshProUGUI scoreTMP;
     public TextMeshProUGUI highestscoreTMP;
-    public Image image;
+    public Image nextImage;
 
 
     public int currentScore;
@@ -55,7 +55,8 @@ public class GameManager : MonoBehaviour
 
         UpdateNextBall(nextBallLevel);
 
-        scoreTMP.text = "score : 0";
+        scoreTMP.text = "" +
+            "0";
         highestscoreTMP.text = ProjectManager.Instance.HighestScore.ToString();
         Nextball();
     }
@@ -78,7 +79,7 @@ public class GameManager : MonoBehaviour
     public void UpdateNextBall(int level)
     {
         currentBallLevel = nextBallLevel;
-        image.sprite = nextBall[nextBallLevel].ballImage;
+        nextImage.sprite = nextBall[nextBallLevel].ballImage;
     }
 
     public void GameOver()
