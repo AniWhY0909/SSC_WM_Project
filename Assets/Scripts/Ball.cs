@@ -80,7 +80,7 @@ public class Ball : MonoBehaviour
     public void Merge(Vector2 position)
     {
         GameManager.Instance.UpdateScore(level);
-        this.gameObject.transform.position = position;
+        this.gameObject.transform.position = position;  
         Setlevel();
     }
 
