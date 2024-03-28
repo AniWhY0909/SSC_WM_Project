@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
 
     public int level;
+
+    public float speed;
 
     public bool isDrop;
     public bool isFall;
@@ -14,6 +17,9 @@ public class Ball : MonoBehaviour
     private Rigidbody2D rb;
     private CircleCollider2D circleCollider2D;
     private SpriteRenderer spriteRenderer;
+
+    public AudioSource audioSource;
+    public ParticleSystem particle;
 
 
     private void Awake()
@@ -34,11 +40,24 @@ public class Ball : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.touchUI == false)
+
+        if (this.gameObject.transform.localScale.x <= 1.0f)
+        {
+            this.gameObject.transform.localScale += Vector3.one * speed * Time.deltaTime;
+        }
+        if (GameManager.Instance.touchUIIndex == 1)
+        {
+            GameManager.Instance.touchUIIndex = 0;
+        }
+        else if (GameManager.Instance.touchUIIndex == 0)
         {
             if (Input.GetMouseButton(0) && !isDrop && !isFall)
             {
                 Vector2 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                //Debug.Log(mPosition.y);
+                if (mPosition.y >= 30f) return;
+
                 float rightBorder = 8.5f - circleCollider2D.radius;
                 float leftBorder = -8.5f + circleCollider2D.radius;
 
@@ -55,10 +74,12 @@ public class Ball : MonoBehaviour
                 isFall = true;
             }
         }
+
     }
 
     public void Setlevel()
     {
+        this.gameObject.transform.localScale = Vector3.zero;
         isMerge = false;
         if (!isDrop)
         {
@@ -85,6 +106,8 @@ public class Ball : MonoBehaviour
     {
         GameManager.Instance.UpdateScore(level);
         this.gameObject.transform.position = position;  
+        audioSource.Play();
+        Instantiate(particle, position, Quaternion.identity);
         Setlevel();
     }
 

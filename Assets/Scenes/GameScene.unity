@@ -716,22 +716,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Play UI (Portrait)
       objectReference: {fileID: 0}
-    - target: {fileID: 1350587299169760640, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350587299169760640, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_Color.b
-      value: 0.5188679
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350587299169760640, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_Color.g
-      value: 0.5188679
-      objectReference: {fileID: 0}
-    - target: {fileID: 1350587299169760640, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_Color.r
-      value: 0.5188679
-      objectReference: {fileID: 0}
     - target: {fileID: 2519531283654943886, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -811,42 +795,6 @@ PrefabInstance:
     - target: {fileID: 2519531283654943886, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3636217843804965736, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417277072798622840, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -175
-      objectReference: {fileID: 0}
-    - target: {fileID: 7417277072798622840, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 370
-      objectReference: {fileID: 0}
-    - target: {fileID: 8864330091273990986, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8864330091273990986, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8864330091273990986, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8864330091273990986, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8864330091273990986, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 540
-      objectReference: {fileID: 0}
-    - target: {fileID: 8864330091273990986, guid: 0a4dc87f0300e214fb524fb85e626870, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 965
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -937,7 +885,7 @@ MonoBehaviour:
   currentScore: 0
   nextBallLevel: 0
   currentBallLevel: 0
-  touchUI: 0
+  touchUIIndex: 0
 --- !u!1 &1946042615
 GameObject:
   m_ObjectHideFlags: 0

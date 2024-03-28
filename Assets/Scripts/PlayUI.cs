@@ -8,36 +8,16 @@ public class PlayUI : MonoBehaviour
     public GameObject menuUI;
     public GameObject gameoverUI;
 
-
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (EventSystem.current.IsPointerOverGameObject())
-            {
-                GameManager.Instance.touchUI = true;
-            }
-
-            else if(menuUI.activeSelf == true && !EventSystem.current.IsPointerOverGameObject())
-            {
-                ClickExit();
-            }
-
-            else
-            {
-                GameManager.Instance.touchUI = false;
-            }
-        }
-    }
-
     public void ClickMenu()
     {
         menuUI.SetActive(true);
+        GameManager.Instance.touchUIIndex = 2;
     }
 
     public void ClickExit()
     {
         menuUI.SetActive(false);
+        GameManager.Instance.touchUIIndex = 1;
     }
 
     public void MusicOnOffBtn()

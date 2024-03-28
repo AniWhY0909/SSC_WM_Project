@@ -52,7 +52,7 @@ public class ProjectManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == this)
+        if (Instance == this)
         {
             DontDestroyOnLoad(gameObject);
         }

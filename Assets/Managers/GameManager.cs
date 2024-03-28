@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     public int nextBallLevel;
     public int currentBallLevel;
 
-    public bool touchUI;
+    public int touchUIIndex;
 
     private static GameManager instance;
 
