@@ -11,13 +11,13 @@ public class PlayUI : MonoBehaviour
     public void ClickMenu()
     {
         menuUI.SetActive(true);
-        GameManager.Instance.touchUIIndex = 2;
+        GameManager.Instance.touchUIIndex = 10;
     }
 
     public void ClickExit()
     {
         menuUI.SetActive(false);
-        GameManager.Instance.touchUIIndex = 1;
+        GameManager.Instance.touchUIIndex = 9;
     }
 
     public void MusicOnOffBtn()

@@ -46,10 +46,16 @@ public class Ball : MonoBehaviour
             this.gameObject.transform.localScale += Vector3.one * speed * Time.deltaTime;
         }
         if (this.gameObject.transform.localScale.x >= 1.0f) this.gameObject.transform.localScale = Vector3.one;
+
         if (GameManager.Instance.touchUIIndex == 1)
         {
             GameManager.Instance.touchUIIndex = 0;
         }
+
+        if (GameManager.Instance.touchUIIndex == 10) return;
+
+        else if (GameManager.Instance.touchUIIndex != 0) GameManager.Instance.touchUIIndex--;
+
         else if (GameManager.Instance.touchUIIndex == 0)
         {
             if (Input.GetMouseButton(0) && !isDrop && !isFall)
@@ -71,6 +77,11 @@ public class Ball : MonoBehaviour
 
             else if (Input.GetMouseButtonUp(0) && !isDrop)
             {
+                Vector2 mPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+                //Debug.Log(mPosition.y);
+                if (mPosition.y >= 30f) return;
+
                 rb.gravityScale = 1;
                 isFall = true;
             }
