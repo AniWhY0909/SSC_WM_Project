@@ -319,9 +319,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.13604009
+    y: 0.00017240644
     width: 1
-    height: 0.7279198
+    height: 0.9996552
   near clip plane: -10
   far clip plane: 10
   field of view: 60
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dd3fc7174d867148933f563b11d4410, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minAspectRatio: 0.562
+  _minAspectRatio: 0.563
   _maxAspectRatio: 0
 --- !u!1 &521592399
 GameObject:
