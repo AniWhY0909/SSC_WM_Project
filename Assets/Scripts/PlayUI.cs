@@ -7,6 +7,7 @@ public class PlayUI : MonoBehaviour
 {
     public GameObject menuUI;
     public GameObject gameoverUI;
+    public GameObject soundoff;
 
     public void ClickMenu()
     {
@@ -25,11 +26,13 @@ public class PlayUI : MonoBehaviour
         if (GameManager.Instance.audioSource.isPlaying)
         {
             GameManager.Instance.audioSource.Stop();
+            soundoff.SetActive(true);
         }
 
         else if (!GameManager.Instance.audioSource.isPlaying)
         {
             GameManager.Instance.audioSource.Play();
+            soundoff.SetActive(false);
         }
     }
 
