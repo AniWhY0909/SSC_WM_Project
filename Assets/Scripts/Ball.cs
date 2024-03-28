@@ -45,6 +45,7 @@ public class Ball : MonoBehaviour
         {
             this.gameObject.transform.localScale += Vector3.one * speed * Time.deltaTime;
         }
+        if (this.gameObject.transform.localScale.x >= 1.0f) this.gameObject.transform.localScale = Vector3.one;
         if (GameManager.Instance.touchUIIndex == 1)
         {
             GameManager.Instance.touchUIIndex = 0;

@@ -20,7 +20,7 @@ public class BoxBoder : MonoBehaviour
             endTime += Time.deltaTime;
 
         }
-        if (endTime >= 1.0f)
+        if (endTime >= 0.1f)
         {
             GameManager.Instance.GameOver();
             endTime = 0;

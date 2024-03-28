@@ -20,10 +20,10 @@ public class GameManager : MonoBehaviour
     public AudioSource audioSource;
 
 
+
     public int currentScore;
     public int nextBallLevel;
     public int currentBallLevel;
-
     public int touchUIIndex;
 
     private static GameManager instance;
