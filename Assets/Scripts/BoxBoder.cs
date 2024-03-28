@@ -23,7 +23,6 @@ public class BoxBoder : MonoBehaviour
         if (endTime >= 0.1f)
         {
             GameManager.Instance.GameOver();
-            endTime = 0;
             endCount = false;
         }
     }
