@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI highestscoreTMP;
     public TextMeshProUGUI gameoverScore;
     public Image nextImage;
-    public AudioSource audioSource;
 
 
 
@@ -82,6 +81,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        touchUIIndex = 10;
         playUI.gameoverUI.SetActive(true);
         gameoverScore.text = "Score : " + currentScore.ToString();
     }

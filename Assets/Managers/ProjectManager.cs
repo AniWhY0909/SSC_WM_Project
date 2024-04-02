@@ -25,6 +25,8 @@ public class ProjectManager : MonoBehaviour
         }
     }
 
+    public AudioSource audioSource;
+
     private int score;
 
     public int Score
@@ -55,6 +57,7 @@ public class ProjectManager : MonoBehaviour
         if (Instance == this)
         {
             DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(audioSource.gameObject);
         }
 
         else

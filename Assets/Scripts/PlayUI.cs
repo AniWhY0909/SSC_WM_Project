@@ -23,15 +23,15 @@ public class PlayUI : MonoBehaviour
 
     public void MusicOnOffBtn()
     {
-        if (GameManager.Instance.audioSource.isPlaying)
+        if (ProjectManager.Instance.audioSource.isPlaying)
         {
-            GameManager.Instance.audioSource.Stop();
+            ProjectManager.Instance.audioSource.Stop();
             soundoff.SetActive(true);
         }
 
-        else if (!GameManager.Instance.audioSource.isPlaying)
+        else if (!ProjectManager.Instance.audioSource.isPlaying)
         {
-            GameManager.Instance.audioSource.Play();
+            ProjectManager.Instance.audioSource.Play();
             soundoff.SetActive(false);
         }
     }
