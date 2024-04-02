@@ -65,8 +65,8 @@ public class Ball : MonoBehaviour
                 //Debug.Log(mPosition.y);
                 if (mPosition.y >= 30f) return;
 
-                float rightBorder = 8.5f - circleCollider2D.radius;
-                float leftBorder = -8.5f + circleCollider2D.radius;
+                float rightBorder = 7f - circleCollider2D.radius;
+                float leftBorder = -7f + circleCollider2D.radius;
 
                 if (mPosition.x >= rightBorder) mPosition.x = rightBorder;
                 if (mPosition.x <= leftBorder) mPosition.x = leftBorder;
